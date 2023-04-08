@@ -1,4 +1,6 @@
-package max.leetcode.medium;
+package max.leetcode.roman;
+
+import java.util.Arrays;
 
 public class RomanToInt {
 
@@ -25,24 +27,24 @@ public class RomanToInt {
         int number = num % 10;
 
         // convert
-        StringBuilder result = new StringBuilder();
-        result.append(new RomanConverot(1000).convert(thousands));
-        result.append(new RomanConverot(100).convert(hundreds));
-        result.append(new RomanConverot(10).convert(dozen));
-        result.append(new RomanConverot(1).convert(number));
+        String result = String.valueOf(
+                new RomanConvertor(1000).convert(thousands)) +
+                new RomanConvertor(100).convert(hundreds) +
+                new RomanConvertor(10).convert(dozen) +
+                new RomanConvertor(1).convert(number);
 
         System.out.println(thousands+"+"+hundreds+"+"+dozen+"+"+number);
 
-        return result.toString();
+        return result;
     }
 
-    class RomanConverot {
+    static class RomanConvertor {
         final int base; // 1, 10, 100, 1000
         final char max; // X, C, M, ?
         final char mid; // V, L, D, ?
         final char low; // I, X, C, M
 
-        RomanConverot(int base) {
+        RomanConvertor(int base) {
             this.base = base;
             if (base == 1) {
                 max = 'X';
@@ -73,22 +75,20 @@ public class RomanToInt {
             if (value == 9) {
                 result.append(low).append(max);
             } else if (value > 5) {
-                result.append(mid).append(genereate(low, (value - 5)));
+                result.append(mid).append(generate(low, (value - 5)));
             } else if (value == 5) {
                 result.append(mid);
             } else if (value == 4) {
                 result.append(low).append(mid);
             } else {
-                result.append(genereate(low, (value)));
+                result.append(generate(low, (value)));
             }
             return result;
         }
 
-        private char[] genereate(char ch, int count) {
+        private char[] generate(char ch, int count) {
             char[] chars = new char[count];
-            for (int i = 0; i < count; i++) {
-                chars[i] = ch;
-            }
+            Arrays.fill(chars, ch);
             return chars;
         }
     }

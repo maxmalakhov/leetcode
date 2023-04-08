@@ -1,4 +1,4 @@
-package max.leetcode.easy;
+package max.leetcode.fibonacci;
 
 /**
  * Fibonacci Numbers are the numbers found in an integer sequence referred to as the Fibonacci sequence. 
@@ -10,6 +10,16 @@ package max.leetcode.easy;
  *                          [ Xn = Xn-1 + xn-2 ]
  */
 public class SumFibonacci {
+
+    public static void main(String[] args) {
+
+        SumFibonacci solution = new SumFibonacci();
+
+        System.out.println("2  = " + solution.fib(2)); // 1
+        System.out.println("8  = " + solution.fib(8)); // 21
+        System.out.println("21 = " + solution.fib(21)); // 10946
+        System.out.println("30 = " + solution.fib(30)); // 832040
+    }
 
     public int fib(int n) {
 
@@ -31,15 +41,4 @@ public class SumFibonacci {
         
         return current + previous;
     }
-
-    public static void main(String[] args) {
-
-        SumFibonacci solution = new SumFibonacci();
-
-        System.out.println("2  = " + solution.fib(2)); // 1
-        System.out.println("8  = " + solution.fib(8)); // 21
-        System.out.println("21 = " + solution.fib(21)); // 10946
-        System.out.println("30 = " + solution.fib(30)); // 832040
-    }
-
 }

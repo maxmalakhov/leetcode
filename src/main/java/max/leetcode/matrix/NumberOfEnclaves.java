@@ -1,4 +1,4 @@
-package max.leetcode.medium;
+package max.leetcode.matrix;
 
 public class NumberOfEnclaves {
 

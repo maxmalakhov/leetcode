@@ -1,4 +1,4 @@
-package max.leetcode.easy;
+package max.leetcode.roman;
 
 import java.util.HashMap;
 import java.util.Map;

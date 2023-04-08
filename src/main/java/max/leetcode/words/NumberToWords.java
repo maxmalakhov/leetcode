@@ -1,9 +1,26 @@
-package max.leetcode.hard;
+package max.leetcode.words;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class NumberToWords {
+
+    public static void main(String[] args) {
+
+        NumberToWords solution = new NumberToWords();
+
+        System.out.println("="+solution.numberToWords(0));
+        System.out.println("="+solution.numberToWords(8));
+        System.out.println("="+solution.numberToWords(21));
+        System.out.println("="+solution.numberToWords(40));
+        System.out.println("="+solution.numberToWords(100));
+        System.out.println("="+solution.numberToWords(909));
+        System.out.println("="+solution.numberToWords(100000));
+        System.out.println("="+solution.numberToWords(18909));
+        System.out.println("="+solution.numberToWords(30089091));
+        System.out.println("="+solution.numberToWords(1847483618));
+        System.out.println("="+solution.numberToWords(2147409387));
+    }
 
     static final Map<Integer, String> mapping = new HashMap<>();
 
@@ -62,16 +79,16 @@ public class NumberToWords {
         int hundreds = num - billions - millions - thousands;
 
         // convert
-        StringBuilder result = new StringBuilder();
-        result.append(new WordConvertor(1_000_000_000).convert(billions));
-        result.append(new WordConvertor(1_000_000).convert(millions));
-        result.append(new WordConvertor(1_000).convert(thousands));
-        result.append(new WordConvertor(1).convert(hundreds));
+        String result = String.valueOf(
+                new WordConvertor(1_000_000_000).convert(billions)) +
+                new WordConvertor(1_000_000).convert(millions) +
+                new WordConvertor(1_000).convert(thousands) +
+                new WordConvertor(1).convert(hundreds);
 
-        return num + ": " + result.toString().trim();
+        return num + ": " + result.trim();
     }
 
-    class WordConvertor {
+    static class WordConvertor {
         final int base; // 1000_000_0000, 1000_000, 1000, 1
         final String unit; // B, M, T
 
@@ -116,22 +133,5 @@ public class NumberToWords {
                 result.append(word).append(" ");
             }
         }
-    }
-
-    public static void main(String[] args) {
-
-        NumberToWords solution = new NumberToWords();
-
-        System.out.println("="+solution.numberToWords(0));
-        System.out.println("="+solution.numberToWords(8));
-        System.out.println("="+solution.numberToWords(21));
-        System.out.println("="+solution.numberToWords(40));
-        System.out.println("="+solution.numberToWords(100));
-        System.out.println("="+solution.numberToWords(909));
-        System.out.println("="+solution.numberToWords(100000));
-        System.out.println("="+solution.numberToWords(18909));
-        System.out.println("="+solution.numberToWords(30089091));
-        System.out.println("="+solution.numberToWords(1847483618));
-        System.out.println("="+solution.numberToWords(2147409387)); 
     }
 }

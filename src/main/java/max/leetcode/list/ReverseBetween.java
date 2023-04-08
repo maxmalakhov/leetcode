@@ -1,4 +1,4 @@
-package max.leetcode.medium;
+package max.leetcode.list;
 
 /**
  * Input: head = [1,2,3,4,5], left = 2, right = 4
@@ -10,7 +10,24 @@ package max.leetcode.medium;
  *  1 <= left <= right <= n
  */
 public class ReverseBetween {
-    
+
+    public static void main(String[] args) {
+
+        ReverseBetween solution = new ReverseBetween();
+
+        ListNode head24 = new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(4, new ListNode(5)))));
+        ListNode head14 = new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(4, new ListNode(5)))));
+        ListNode head25 = new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(4, new ListNode(5)))));
+        ListNode head34 = new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(4, new ListNode(5)))));
+
+        printList("init: ", head24); // 1 2 3 4 5
+
+        printList("2, 4: ", solution.reverseBetween(head24, 2, 4)); // -> 1 4 3 2 5
+        printList("1, 4: ", solution.reverseBetween(head14, 1, 4)); // -> 4 3 2 1 5
+        printList("2, 5: ", solution.reverseBetween(head25, 2, 5)); // -> 1 5 4 3 2
+        printList("3, 4: ", solution.reverseBetween(head34, 3, 4)); // -> 1 2 4 3 5
+    }
+
     public ListNode reverseBetween(ListNode head, int left, int right) {
 
         ListNode leftNode = null, rightNode = null, first = null, last = null, previous = null, next;
@@ -57,28 +74,11 @@ public class ReverseBetween {
         System.out.println();
     }
 
-    public static void main(String[] args) {
-
-        ReverseBetween solution = new ReverseBetween();
-
-        ListNode head24 = new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(4, new ListNode(5)))));
-        ListNode head14 = new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(4, new ListNode(5)))));
-        ListNode head25 = new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(4, new ListNode(5)))));
-        ListNode head34 = new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(4, new ListNode(5)))));
-
-        printList("init: ", head24); // 1 2 3 4 5
-
-        printList("2, 4: ", solution.reverseBetween(head24, 2, 4)); // -> 1 4 3 2 5
-        printList("1, 4: ", solution.reverseBetween(head14, 1, 4)); // -> 4 3 2 1 5
-        printList("2, 5: ", solution.reverseBetween(head25, 2, 5)); // -> 1 5 4 3 2
-        printList("3, 4: ", solution.reverseBetween(head34, 3, 4)); // -> 1 2 4 3 5
+    static class ListNode {
+        int val;
+        ListNode next;
+        ListNode() {}
+        ListNode(int val) { this.val = val; }
+        ListNode(int val, ListNode next) { this.val = val; this.next = next; }
     }
-}
-
-class ListNode {
-    int val;
-    ListNode next;
-    ListNode() {}
-    ListNode(int val) { this.val = val; }
-    ListNode(int val, ListNode next) { this.val = val; this.next = next; }
 }

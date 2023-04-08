@@ -1,4 +1,4 @@
-package max.leetcode.easy;
+package max.leetcode.list;
 
 /**
  * Input: head = [1,2,3,4,5]
@@ -8,6 +8,21 @@ package max.leetcode.easy;
  */
 
 public class ReverseList {
+
+    public static void main(String[] args) {
+
+        ReverseList solution = new ReverseList();
+
+        ListNode head = new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(4, new ListNode(5)))));
+
+        printList(head); // 1 2 3 4 5
+
+        ListNode reversed = solution.reverseList(head);
+        printList(reversed); // 5 4 3 2 1
+
+        ListNode doubleReversed = solution.reverseListRecursively(reversed);
+        printList(doubleReversed); // 1 2 3 4 5
+    }
     
     public ListNode reverseList(ListNode head) {
 
@@ -50,26 +65,11 @@ public class ReverseList {
         System.out.println();
     }
 
-    public static void main(String[] args) {
-
-        ReverseList solution = new ReverseList();
-
-        ListNode head = new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(4, new ListNode(5)))));
-
-        printList(head); // 1 2 3 4 5
-
-        ListNode reversed = solution.reverseList(head);
-        printList(reversed); // 5 4 3 2 1
-
-        ListNode doubleReversed = solution.reverseListRecursively(reversed);
-        printList(doubleReversed); // 1 2 3 4 5
+    static class ListNode {
+        int val;
+        ListNode next;
+        ListNode() {}
+        ListNode(int val) { this.val = val; }
+        ListNode(int val, ListNode next) { this.val = val; this.next = next; }
     }
-}
-
-class ListNode {
-    int val;
-    ListNode next;
-    ListNode() {}
-    ListNode(int val) { this.val = val; }
-    ListNode(int val, ListNode next) { this.val = val; this.next = next; }
 }
